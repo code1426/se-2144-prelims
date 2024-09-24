@@ -1,13 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./src/style.css">
-    <title>Calculator</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator App</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <div class="calculator">
+    <div class="display">
+      <span id="hello-world"></span>
+      <div id="result">0</div>
+    </div>
+    <div class="keypad">
+      <button class="btn" data-action="7">7</button>
+      <button class="btn" data-action="8">8</button>
+      <button class="btn" data-action="9">9</button>
+      <button class="operator" data-action="add">+</button>
+
+      <button class="btn" data-action="4">4</button>
+      <button class="btn" data-action="5">5</button>
+      <button class="btn" data-action="6">6</button>
+      <button class="operator" data-action="subtract">-</button>
+
+      <button class="btn" data-action="1">1</button>
+      <button class="btn" data-action="2">2</button>
+      <button class="btn" data-action="3">3</button>
+      <button class="operator" data-action="multiply">&times;</button>
+
+      <button class="btn" data-action="0">0</button>
+      <button class="btn" data-action="period">.</button>
+      <button class="btn" data-action="equals">=</button>
+      <button class="operator" data-action="divide">&divide;</button>
+
+      <button class="btn" data-action="backspace">⌫</button>
+      <button class="btn" data-action="clear">AC</button>
+      <button class="btn" data-action="bye">Bye</button>
+      <button class="btn" data-action="hello">Hello</button>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
 </html>

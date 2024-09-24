@@ -1,0 +1,95 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 10px;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, blue, rgb(255, 6, 222));
+}
+
+.calculator {
+  width: 100%;
+  min-width: 310px;
+  max-width: 350px;
+  padding: 20px;
+  background-color: #333;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.display {
+  background-color: #222;
+  padding: 10px;
+  border-radius: 8px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  display: flex;
+  flex: 1;
+  color: #fff;
+  font-size: 2.5rem;
+  text-align: right;
+  justify-content: space-between;
+}
+
+#hello-world {
+  font-size: 1rem;
+  color: #ff9500;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn {
+  font-size: 1.5rem;
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #555;
+}
+
+.operator {
+  font-size: 1.5rem;
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  background-color: #ff9500;
+}
+
+.operator:hover {
+  background-color: #e08900;
+}
+
+@media (max-width: 400px) {
+  .calculator {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .btn {
+    padding: 10px;
+    font-size: 1.2rem;
+  }
+
+  .display {
+    font-size: 2rem;
+    padding: 8px;
+  }
+}
