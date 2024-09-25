@@ -145,12 +145,12 @@ export class Calculator {
   public handleBye(): void {
     if (!this.isTurnedOn) return
     this.clear();
+    this.isTurnedOn = false;
     this.currentOperand = "Goodbye!";
     this.updateDisplay();
     setTimeout(() => {
       this.clear();
       this.currentOperand = "";
-      this.isTurnedOn = false;
       this.updateDisplay();
     }, 2000);
   }
