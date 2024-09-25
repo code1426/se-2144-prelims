@@ -12,7 +12,12 @@ const previousOperandElement = document.querySelector<HTMLDivElement>("#previous
 const currentOperandElement = document.querySelector<HTMLDivElement>("#currentOperand")
 const displayElement = document.querySelector<HTMLDivElement>("#screen")
 
-const calculator = new Calculator(previousOperandElement!, currentOperandElement!, helloTextElement!);
+const calculator = new Calculator(
+  previousOperandElement!,        
+  currentOperandElement!, 
+  helloTextElement!, 
+  displayElement!
+  );
 
 numberButtons.forEach(buttons => {
   buttons.addEventListener("click", () => {
@@ -36,7 +41,6 @@ backspaceButton?.addEventListener("click", () => {
 allClearButton?.addEventListener("click", () => {
   calculator.clear();
   calculator.updateDisplay();
-  displayElement!.style.backgroundColor = "#222"
 })
 
 equalsButton?.addEventListener("click", () => {
@@ -51,9 +55,4 @@ helloButton?.addEventListener("click", () => {
 
 byeButton?.addEventListener("click", () => {
   calculator.handleBye();
-  if (!calculator.isTurnedOn) {
-    setTimeout(() => {
-      displayElement!.style.backgroundColor = "#111"
-    }, 2000)
-  }
 })

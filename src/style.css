@@ -12,7 +12,6 @@ body {
 button {
   -webkit-tap-highlight-color: transparent;
 }
-
 .calculator {
   width: 100%;
   min-width: 310px;
@@ -47,19 +46,16 @@ button {
   justify-content: space-between;
   align-items: center;
 }
-
 #hello-world {
   font-size: 1.3rem;
   color: #ff9500;
 }
-
 .keypad {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   margin-top: 20px;
 }
-
 .btn {
   user-select: none;
   font-size: 1.5rem;
@@ -69,14 +65,12 @@ button {
   background-color: #444;
   color: white;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.250s;
   box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.142);
 }
-
 .btn:active {
-  background-color: #666;
+  background-color: #777;
 }
-
 .operator {
   font-size: 1.5rem;
   padding: 15px;
@@ -84,28 +78,24 @@ button {
   border: none;
   color: white;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.250s;
   background-color: #ff9500;
   box-shadow: 4px 6px 2px rgba(0, 0, 0, 0.142);
 }
-
 .operator:active {
-  background-color: #bc7503;
+  background-color: #895400;
 }
 
 @media (max-width: 380px) {
   .calculator {
-    padding: 12px;
-    font-size: 14px;
+    padding: 14px;
   }
-
   .btn {
     padding: 10px;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
-
   .display {
-    font-size: 2rem;
-    padding: 8px;
+    font-size: 2.6rem;
+    padding: 10px;
   }
 }
