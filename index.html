@@ -8,35 +8,39 @@
 </head>
 <body>
   <div class="calculator">
-    <div class="display">
-      <span id="hello-world"></span>
-      <div id="result">0</div>
+    <div class="display" id="screen">
+      <div class="previous-operand" id="previousOperand"></div>
+      <div class="display-row">
+        <span id="hello-world"></span>
+        <div id="currentOperand"></div>
+      </div>
     </div>
+    
     <div class="keypad">
-      <button class="btn" data-action="7">7</button>
-      <button class="btn" data-action="8">8</button>
-      <button class="btn" data-action="9">9</button>
-      <button class="operator" data-action="add">+</button>
+      <button class="btn" data-number="7">7</button>
+      <button class="btn" data-number="8">8</button>
+      <button class="btn" data-number="9">9</button>
+      <button class="btn operator" data-operation="+">+</button>
 
-      <button class="btn" data-action="4">4</button>
-      <button class="btn" data-action="5">5</button>
-      <button class="btn" data-action="6">6</button>
-      <button class="operator" data-action="subtract">-</button>
+      <button class="btn" data-number="4">4</button>
+      <button class="btn" data-number="5">5</button>
+      <button class="btn" data-number="6">6</button>
+      <button class="btn operator" data-operation="-">-</button>
 
-      <button class="btn" data-action="1">1</button>
-      <button class="btn" data-action="2">2</button>
-      <button class="btn" data-action="3">3</button>
-      <button class="operator" data-action="multiply">&times;</button>
+      <button class="btn" data-number="1">1</button>
+      <button class="btn" data-number="2">2</button>
+      <button class="btn" data-number="3">3</button>
+      <button class="btn operator" data-operation="×">&times;</button>
 
-      <button class="btn" data-action="0">0</button>
-      <button class="btn" data-action="period">.</button>
-      <button class="btn" data-action="equals">=</button>
-      <button class="operator" data-action="divide">&divide;</button>
+      <button class="btn" data-number="0">0</button>
+      <button class="btn" data-number=".">.</button>
+      <button class="btn" data-equals>=</button>
+      <button class="btn operator" data-operation="÷">&divide;</button>
 
-      <button class="btn" data-action="backspace">⌫</button>
-      <button class="btn" data-action="clear">AC</button>
-      <button class="btn" data-action="bye">Bye</button>
-      <button class="btn" data-action="hello">Hello</button>
+      <button class="btn" data-backspace>⌫</button>
+      <button class="btn" data-allClear>AC</button>
+      <button class="btn" data-bye>Bye</button>
+      <button class="btn" data-hello>Hello</button>
     </div>
   </div>
 
