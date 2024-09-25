@@ -150,6 +150,7 @@ export class Calculator {
     this.updateDisplay();
     setTimeout(() => {
       this.clear();
+      this.isTurnedOn = false;
       this.currentOperand = "";
       this.updateDisplay();
     }, 2000);
