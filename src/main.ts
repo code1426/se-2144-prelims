@@ -51,7 +51,9 @@ helloButton?.addEventListener("click", () => {
 
 byeButton?.addEventListener("click", () => {
   calculator.handleBye();
-  setTimeout(() => {
-    displayElement!.style.backgroundColor = "#111"
-  }, 2000)
+  if (!calculator.isTurnedOn) {
+    setTimeout(() => {
+      displayElement!.style.backgroundColor = "#111"
+    }, 2000)
+  }
 })

@@ -6,8 +6,8 @@ export class Calculator {
   private previousOperand: string;
   private currentOperand: string;
   private operator: string | null;
-  private isTurnedOn: boolean;
   private greetings: string[];
+  isTurnedOn: boolean;
 
   constructor(previousOperandElement: HTMLDivElement, currentOperandElement: HTMLDivElement, helloTextElement: HTMLDivElement) {
     this.currentOperandElement = currentOperandElement;

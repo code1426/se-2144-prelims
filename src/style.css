@@ -9,6 +9,9 @@ body {
   font-family: 'Arial', sans-serif;
   background: linear-gradient(135deg, rgb(255, 255, 255), rgb(65, 65, 65));
 }
+button {
+  -webkit-tap-highlight-color: transparent;
+}
 
 .calculator {
   width: 100%;
@@ -58,6 +61,7 @@ body {
 }
 
 .btn {
+  user-select: none;
   font-size: 1.5rem;
   padding: 15px;
   border-radius: 8px;
@@ -86,7 +90,7 @@ body {
 }
 
 .operator:active {
-  background-color: #d18101;
+  background-color: #bc7503;
 }
 
 @media (max-width: 380px) {
