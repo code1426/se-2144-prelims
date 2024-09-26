@@ -16,14 +16,13 @@ button {
   width: 100%;
   min-width: 310px;
   max-width: 350px;
-  padding: 20px;
+  padding: 50px 20px 25px;
   background-color: #333;
   border-radius: 10px;
-  box-shadow: 4px 7px 6px rgba(0, 0, 0, 0.447);
+  box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.4), inset 3px 3px 8px rgba(255, 255, 255, 0.4), inset -3px -3px 8px rgba(0, 0, 0, 0.5);
 }
-
 .display {
-  background-color: #111;
+  background-color: #181818;
   padding: 10px;
   border-radius: 8px;
   min-height: 100px;
@@ -34,6 +33,7 @@ button {
   font-size: 2.8rem;
   text-align: right;
   justify-content: space-between;
+  box-shadow: 2px 2px 3px rgba(169, 169, 169, 0.3), inset 2px 2px 3px rgba(0, 0, 0, 0.616);
 }
 .previous-operand {
   margin-top: 5px;
@@ -66,10 +66,13 @@ button {
   color: white;
   cursor: pointer;
   transition: background-color 0.250s;
-  box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.142);
+  transform: scale();
+  box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.25), inset 2px 2px 3px rgba(255, 255, 255, 0.13), inset -2px -2px 3px rgba(0, 0, 0, 0.33);
 }
 .btn:active {
-  background-color: #777;
+  background-color: #888;
+  transform: scale(0.95, 0.95);
+  box-shadow: 4.2px 4.2px 2px rgba(0, 0, 0, 0.3);
 }
 .operator {
   font-size: 1.5rem;
@@ -80,13 +83,15 @@ button {
   cursor: pointer;
   transition: background-color 0.250s;
   background-color: #ff9500;
-  box-shadow: 4px 6px 2px rgba(0, 0, 0, 0.142);
+  box-shadow: 4px 6px 2px rgba(0, 0, 0, 0.3), inset 2px 2px 3px rgba(255, 255, 255, 0.53), inset -2px -2px 3px rgba(0, 0, 0, 0.43);
 }
 .operator:active {
   background-color: #895400;
+  transform: scale(0.95, 0.95);
+  box-shadow: 4.2px 4.2px 2px rgba(0, 0, 0, 0.3);
 }
 
-@media (max-width: 380px) {
+/* @media (max-width: 380px) {
   .calculator {
     padding: 14px;
   }
@@ -98,4 +103,4 @@ button {
     font-size: 2.6rem;
     padding: 10px;
   }
-}
+} */

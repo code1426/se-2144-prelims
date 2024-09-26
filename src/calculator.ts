@@ -40,7 +40,7 @@ export class Calculator {
   public backspace(): void {
     if (!this.isTurnedOn 
       || this.currentOperand === "ERROR" 
-      || this.currentOperand === "0"
+      || (this.currentOperand === "0" && !this.previousOperand)
     ) return
 
     if (!this.currentOperand || this.currentOperand === "0") {
@@ -62,7 +62,7 @@ export class Calculator {
  
   public setOperator(operator: string): void {
     if (!this.isTurnedOn) return
-    if (this.operator && this.previousOperand) {
+    if (this.operator && this.previousOperand && !this.currentOperand) {
       this.operator = operator
     }
     if (!this.currentOperand || this.currentOperand === "ERROR") return
@@ -132,12 +132,12 @@ export class Calculator {
 
   public handleBye(): void {
     if (!this.isTurnedOn) return;
-    this.clear("Goodbye!", false); // Clear and change the display into "Goodbye!" then turn it off
+    this.clear("Goodbye", false); // Clear and change the display into "Goodbye!" then turn it off
     this.updateDisplay();
 
     setTimeout(() => {
       this.clear("", false);
-      this.displayContainer.style.backgroundColor = "#111";
+      this.displayContainer.style.backgroundColor = "#181818";
       this.updateDisplay();
     }, 2000);
   }
