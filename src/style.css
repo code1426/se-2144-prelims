@@ -5,7 +5,7 @@ body {
   height: 100vh;
   background-color: #f4f4f4;
   margin: 0;
-  padding: 10px;
+  padding: 20px;
   font-family: 'Arial', sans-serif;
   background: linear-gradient(135deg, rgb(255, 255, 255), rgb(65, 65, 65));
 }
@@ -33,7 +33,7 @@ button {
   font-size: 2.8rem;
   text-align: right;
   justify-content: space-between;
-  box-shadow: 2px 2px 3px rgba(169, 169, 169, 0.3), inset 2px 2px 3px rgba(0, 0, 0, 0.616);
+  box-shadow: 2px 2px 3px rgba(169, 169, 169, 0.3), inset 2px 2px 3px rgba(0, 0, 0, 0.616), -2px -2px 3px rgba(0, 0, 0, 0.3);
 }
 .previous-operand {
   margin-top: 5px;
