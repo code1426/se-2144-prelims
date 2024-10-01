@@ -15,7 +15,7 @@ export class Calculator {
     currentOperandElement: HTMLDivElement, 
     helloTextElement: HTMLDivElement, 
     displayContainer: HTMLDivElement
-    ){
+    ) {
     this.currentOperandElement = currentOperandElement;
     this.previousOperandElement = previousOperandElement;
     this.displayContainer = displayContainer;

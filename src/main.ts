@@ -13,46 +13,46 @@ const currentOperandElement = document.querySelector<HTMLDivElement>("#currentOp
 const displayElement = document.querySelector<HTMLDivElement>("#screen")
 
 const calculator = new Calculator(
-  previousOperandElement!,        
-  currentOperandElement!, 
-  helloTextElement!, 
+  previousOperandElement!,
+  currentOperandElement!,
+  helloTextElement!,
   displayElement!
   );
 
-numberButtons.forEach(buttons => {
-  buttons.addEventListener("click", () => {
-    calculator.appendValue(buttons.dataset.number!);
-    calculator.updateDisplay();
+const addEventListeners = (calculator: Calculator, elements: HTMLDivElement[] | NodeListOf<HTMLDivElement>): void => {
+  elements.forEach(element => {
+    element.addEventListener("click", () => {
+      switch (element) {
+        case backspaceButton:
+          calculator.backspace();
+          break;
+        case allClearButton:
+          calculator.clear();
+          break;
+        case equalsButton:
+          calculator.calculate();
+          break;
+        case helloButton:
+          calculator.handleHello();
+          break;
+        case byeButton:
+          calculator.handleBye();
+          break;
+      }
+      
+      switch (elements) {
+        case numberButtons:
+          calculator.appendValue(element.dataset.number!);
+          break;
+        case operationButtons:
+          calculator.setOperator(element.dataset.operation!);
+          break;
+      }
+      calculator.updateDisplay();
+    })
   })
-})
+}
 
-operationButtons.forEach(buttons => {
-  buttons.addEventListener("click", () => {
-    calculator.setOperator(buttons.dataset.operation!);
-    calculator.updateDisplay();
-  })
-})
-
-backspaceButton?.addEventListener("click", () => {
-  calculator.backspace();
-  calculator.updateDisplay();
-})
-
-allClearButton?.addEventListener("click", () => {
-  calculator.clear();
-  calculator.updateDisplay();
-})
-
-equalsButton?.addEventListener("click", () => {
-  calculator.calculate();
-  calculator.updateDisplay();
-})
-
-helloButton?.addEventListener("click", () => {
-  calculator.handleHello();
-  calculator.updateDisplay();
-})
-
-byeButton?.addEventListener("click", () => {
-  calculator.handleBye();
-})
+addEventListeners(calculator, numberButtons)
+addEventListeners(calculator, operationButtons)
+addEventListeners(calculator, [ backspaceButton!, allClearButton!, equalsButton!, helloButton!, byeButton! ])
