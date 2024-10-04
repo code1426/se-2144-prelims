@@ -9,6 +9,7 @@ export class Calculator {
   private operator: string | null;
   private isNewEntry: boolean;
   private isTurnedOn: boolean;
+  private isClearable: boolean;
 
   constructor (
     previousOperandElement: HTMLDivElement, 
@@ -26,9 +27,11 @@ export class Calculator {
     this.operator = null
     this.isTurnedOn = false
     this.isNewEntry = true
+    this.isClearable = true
   }
 
   public clear(changeDisplayInto: string = "0", toggleOn: boolean = true): void {
+    if (!this.isClearable) return
     this.isTurnedOn = toggleOn;
     this.helloDisplayValue = ""
     this.previousOperand = ""
@@ -38,7 +41,7 @@ export class Calculator {
   }
 
   public backspace(): void {
-    if (!this.isTurnedOn 
+    if (!this.isTurnedOn
       || this.currentOperand === "ERROR" 
       || (this.currentOperand === "0" && !this.previousOperand)
     ) return
@@ -59,12 +62,9 @@ export class Calculator {
     this.previousOperand = ""
     this.operator = null;
   }
- 
+
   public setOperator(operator: string): void {
     if (!this.isTurnedOn) return
-    if (this.operator && this.previousOperand && !this.currentOperand) {
-      this.operator = operator
-    }
     if (!this.currentOperand || this.currentOperand === "ERROR") return
     if (this.previousOperand) {
       this.calculate()
@@ -132,12 +132,16 @@ export class Calculator {
 
   public handleBye(): void {
     if (!this.isTurnedOn) return;
-    this.clear("Goodbye", false); // Clear and change the display into "Goodbye!" then turn it off
+    console.log("true")
+    this.clear("Goodbye!", false); // Clear and change the display into "Goodbye!" then turn it off
     this.updateDisplay();
+    this.isClearable = false
 
     setTimeout(() => {
+      this.isClearable = true
       this.clear("", false);
       this.displayContainer.style.backgroundColor = "#181818";
+      console.log("false")
       this.updateDisplay();
     }, 2000);
   }
