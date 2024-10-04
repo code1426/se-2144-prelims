@@ -1,3 +1,13 @@
+import { 
+  characterLimit, 
+  greetings, 
+  screenActive, 
+  screenInactive, 
+  goodbyeText, 
+  errorMessage, 
+  initialDisplay 
+} from "./constants";
+
 export class Calculator {
   private currentOperandElement: HTMLDivElement;
   private previousOperandElement: HTMLDivElement;
@@ -30,7 +40,7 @@ export class Calculator {
     this.isClearable = true
   }
 
-  public clear(changeDisplayInto: string = "0", toggleOn: boolean = true): void {
+  public clear(changeDisplayInto: string = initialDisplay, toggleOn: boolean = true): void {
     if (!this.isClearable) return
     this.isTurnedOn = toggleOn;
     this.helloDisplayValue = ""
@@ -42,18 +52,18 @@ export class Calculator {
 
   public backspace(): void {
     if (!this.isTurnedOn
-      || this.currentOperand === "ERROR" 
-      || (this.currentOperand === "0" && !this.previousOperand)
+      || this.currentOperand === errorMessage
+      || (this.currentOperand === initialDisplay && !this.previousOperand)
     ) return
 
-    if (!this.currentOperand || this.currentOperand === "0") {
+    if (!this.currentOperand || this.currentOperand === initialDisplay) {
       this.handleDeleteOperator()
       return
     }
     if (this.currentOperand.length > 1) {
       this.currentOperand = this.currentOperand.slice(0, -1);
     } else {
-      this.currentOperand = "0";
+      this.currentOperand = initialDisplay;
     }
   }
 
@@ -65,36 +75,37 @@ export class Calculator {
 
   public setOperator(operator: string): void {
     if (!this.isTurnedOn) return
-    if (!this.currentOperand || this.currentOperand === "ERROR") return
+    if (!this.currentOperand) return
     if (this.previousOperand) {
       this.calculate()
     }
+    if (this.currentOperand === errorMessage) return
     this.operator = operator;
     this.previousOperand = this.currentOperand;
     this.currentOperand = "";
   }
 
   public appendValue(value: string): void {
-    if (!this.isTurnedOn || this.currentOperand === "ERROR") return
+    if (!this.isTurnedOn || this.currentOperand === errorMessage) return
     if (value === "." && this.currentOperand.includes(".")) return;  // Prevent multiple decimals
     if (this.isNewEntry) {
-      this.currentOperand = "0"
+      this.currentOperand = initialDisplay
     }
     // to prevent operand to start with 0
-    if (this.currentOperand === "0" && value !== ".") {
+    if (this.currentOperand === initialDisplay && value !== ".") {
       this.currentOperand = ""
     }
-    if (this.currentOperand.length >= 10) return
+    if (this.currentOperand.length >= characterLimit) return
     this.currentOperand += value;
     this.isNewEntry = false;
   }
 
   public calculate(): void {
-    if (!this.isTurnedOn || this.currentOperand === "ERROR") return
+    if (!this.isTurnedOn || this.currentOperand === errorMessage) return
 
     const prev = parseFloat(this.previousOperand);
     const current = parseFloat(this.currentOperand);
-    let result: number | "ERROR";
+    let result: number | string;
 
     if (isNaN(prev) || isNaN(current)) return;
 
@@ -109,21 +120,21 @@ export class Calculator {
         result = prev * current;
         break;
       case "÷":
-        result = current === 0 ? "ERROR" : prev / current;  // Prevent division by zero
+        result = current === 0 ? errorMessage : prev / current;  // Prevent division by zero
         break;
       default:
         return;
     }
     this.clear(result.toString()); // Clear the display and change it into result
 
-    if (this.currentOperand.length > 10) {
-      this.currentOperand = this.currentOperand.slice(0, 10); // Limit to 10 digits
+    if (this.currentOperand.length > characterLimit) {
+      this.currentOperand = this.currentOperand.slice(0, characterLimit); // Limit to 10 digits
     }
   }
 
   public updateDisplay(): void {
     if (this.isTurnedOn) {
-      this.displayContainer.style.backgroundColor = "#222";
+      this.displayContainer.style.backgroundColor = screenActive;
     }
     this.currentOperandElement.innerText = this.currentOperand;
     this.previousOperandElement.innerText = this.previousOperand + (this.operator ? ` ${this.operator}` : "");
@@ -132,54 +143,21 @@ export class Calculator {
 
   public handleBye(): void {
     if (!this.isTurnedOn) return;
-    this.clear("Goodbye!", false); // Clear and change the display into "Goodbye!" then turn it off
+    this.clear(goodbyeText, false); // Clear and change the display into "Goodbye!" then turn it off
     this.updateDisplay();
     this.isClearable = false
 
     setTimeout(() => {
       this.isClearable = true
       this.clear("", false);
-      this.displayContainer.style.backgroundColor = "#181818";
+      this.displayContainer.style.backgroundColor = screenInactive;
       this.updateDisplay();
     }, 2000);
   }
 
   public handleHello():  void {
     if (!this.isTurnedOn) return
-    const greetings = [
-      "Hello",   // English
-      "Hola",    // Spanish
-      "Kamusta", // Filipino
-      "Bonjour", // French
-      "Ciao",    // Italian
-      "Hallo",   // German
-      "Olá",     // Portuguese
-      "Namaste", // Hindi
-      "Salaam",  // Persian
-      "Nǐ hǎo",  // Chinese (Mandarin)
-      "Merhaba", // Turkish
-      "Shalom",  // Hebrew
-      "Sawubona", // Zulu
-      "Salve",   // Latin
-      "Hei",     // Norwegian
-      "Ahoj",    // Czech
-      "Xin chào", // Vietnamese
-      "Yassas",  // Greek
-      "Sawasdee", // Thai
-      "Selamat", // Malay/Indonesian
-      "Jambo",   // Swahili
-      "Dia dhuit", // Irish Gaelic
-      "Hej",     // Swedish
-      "Sveiki",  // Latvian
-      "Moi",     // Finnish
-      "Tere",    // Estonian
-      "Halo",    // Indonesian
-      "Mingalaba", // Burmese
-      "Saluton", // Esperanto
-      "Sannu",   // Hausa
-      "Bula",    // Fijian
-      "Privet"   // Russian (informal)
-    ];
+    
     const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
     this.helloDisplayValue = randomGreeting;
 
