@@ -132,7 +132,6 @@ export class Calculator {
 
   public handleBye(): void {
     if (!this.isTurnedOn) return;
-    console.log("true")
     this.clear("Goodbye!", false); // Clear and change the display into "Goodbye!" then turn it off
     this.updateDisplay();
     this.isClearable = false
@@ -141,7 +140,6 @@ export class Calculator {
       this.isClearable = true
       this.clear("", false);
       this.displayContainer.style.backgroundColor = "#181818";
-      console.log("false")
       this.updateDisplay();
     }, 2000);
   }
