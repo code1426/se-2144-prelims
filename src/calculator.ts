@@ -20,6 +20,7 @@ export class Calculator {
   private isNewEntry: boolean;
   private isTurnedOn: boolean;
   private isClearable: boolean;
+  // private canNegative: boolean;
 
   constructor (
     previousOperandElement: HTMLDivElement, 
@@ -38,6 +39,7 @@ export class Calculator {
     this.isTurnedOn = false
     this.isNewEntry = true
     this.isClearable = true
+    // this.canNegative = true
   }
 
   public clear(changeDisplayInto: string = initialDisplay, toggleOn: boolean = true): void {
@@ -73,8 +75,19 @@ export class Calculator {
     this.operator = null;
   }
 
+  // public setNegativeNumber(): void {
+  //   if (this.currentOperand === initialDisplay || this.currentOperand === "") {
+  //     this.currentOperand = "-"
+  //   }
+  //   this.canNegative = false
+  // }
+
   public setOperator(operator: string): void {
     if (!this.isTurnedOn) return
+    // if (operator === "-" && this.canNegative) {
+    //   this.setNegativeNumber()
+    //   return
+    // }
     if (!this.currentOperand) return
     if (this.previousOperand) {
       this.calculate()
@@ -83,17 +96,18 @@ export class Calculator {
     this.operator = operator;
     this.previousOperand = this.currentOperand;
     this.currentOperand = "";
+    // this.canNegative = true
   }
 
   public appendValue(value: string): void {
     if (!this.isTurnedOn || this.currentOperand === errorMessage) return
     if (value === "." && this.currentOperand.includes(".")) return;  // Prevent multiple decimals
     if (this.isNewEntry) {
-      this.currentOperand = initialDisplay
+      this.clear()
     }
     // to prevent operand to start with 0
     if (this.currentOperand === initialDisplay && value !== ".") {
-      this.currentOperand = ""
+      this.clear("")
     }
     if (this.currentOperand.length >= characterLimit) return
     this.currentOperand += value;
