@@ -103,11 +103,11 @@ export class Calculator {
     if (!this.isTurnedOn || this.currentOperand === errorMessage) return
     if (value === "." && this.currentOperand.includes(".")) return;  // Prevent multiple decimals
     if (this.isNewEntry) {
-      this.clear()
+      this.currentOperand = initialDisplay
     }
     // to prevent operand to start with 0
     if (this.currentOperand === initialDisplay && value !== ".") {
-      this.clear("")
+      this.currentOperand = ""
     }
     if (this.currentOperand.length >= characterLimit) return
     this.currentOperand += value;
